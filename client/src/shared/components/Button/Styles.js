@@ -25,63 +25,63 @@ export const StyledButton = styled.button`
 `;
 
 const colored = css`
-  color: #fff;
-  background: ${props => color[props.variant]};
-  ${font.medium}
-  &:not(:disabled) {
-    &:hover {
-      background: ${props => mixin.lighten(color[props.variant], 0.15)};
+    color: #fff;
+    background: ${props => color[props.variant]};
+    ${font.medium}
+    &:not(:disabled) {
+        &:hover {
+            background: ${props => mixin.lighten(color[props.variant], 0.15)};
+        }
+        &:active {
+            background: ${props => mixin.darken(color[props.variant], 0.1)};
+        }
+        ${props =>
+            props.isActive &&
+            css`
+                background: ${mixin.darken(color[props.variant], 0.1)} !important;
+            `}
     }
-    &:active {
-      background: ${props => mixin.darken(color[props.variant], 0.1)};
-    }
-    ${props =>
-      props.isActive &&
-      css`
-        background: ${mixin.darken(color[props.variant], 0.1)} !important;
-      `}
-  }
 `;
 
 const secondaryAndEmptyShared = css`
-  color: ${color.textDark};
-  ${font.regular}
-  &:not(:disabled) {
-    &:hover {
-      background: ${color.backgroundLight};
+    color: ${color.textDark};
+    ${font.regular}
+    &:not(:disabled) {
+        &:hover {
+            background: ${color.backgroundLight};
+        }
+        &:active {
+            color: ${color.primary};
+            background: ${color.backgroundLightPrimary};
+        }
+        ${props =>
+            props.isActive &&
+            css`
+                color: ${color.primary};
+                background: ${color.backgroundLightPrimary} !important;
+            `}
     }
-    &:active {
-      color: ${color.primary};
-      background: ${color.backgroundLightPrimary};
-    }
-    ${props =>
-      props.isActive &&
-      css`
-        color: ${color.primary};
-        background: ${color.backgroundLightPrimary} !important;
-      `}
-  }
 `;
 
 const buttonVariants = {
-  primary: colored,
-  success: colored,
-  danger: colored,
-  secondary: css`
-    background: ${color.secondary};
-    ${secondaryAndEmptyShared};
-  `,
-  empty: css`
-    background: #fff;
-    ${secondaryAndEmptyShared};
-  `,
+    primary: colored,
+    success: colored,
+    danger: colored,
+    secondary: css`
+        background: ${color.secondary};
+        ${secondaryAndEmptyShared};
+    `,
+    empty: css`
+        background: #fff;
+        ${secondaryAndEmptyShared};
+    `,
 };
 
 export const StyledSpinner = styled(Spinner)`
-  position: relative;
-  top: 1px;
+    position: relative;
+    top: 1px;
 `;
 
 export const Text = styled.div`
-  padding-left: ${props => (props.withPadding ? 7 : 0)}px;
+    padding-left: ${props => (props.withPadding ? 7 : 0)}px;
 `;

@@ -1,8 +1,18 @@
+# Postgres db server docker create command:
+ 
+ ```
+ docker run -d \
+	--name jira_development \
+	-e POSTGRES_PASSWORD=1qaz@WSX \
+	-e PGDATA=/var/lib/postgresql/data/pgdata \
+	-p 5432:5432 \
+	postgres:11.18-bullseye    
+```
+
 # Project structure 🏗
 
 The API codebase is fairly simple and should be easy enough to understand.
 
-<br>
 
 | File or folder    | Description                                                                                                                                                                                                                 |
 | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

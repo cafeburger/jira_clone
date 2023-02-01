@@ -4,63 +4,63 @@ import { color, font, mixin } from 'shared/utils/styles';
 import { Avatar } from 'shared/components';
 
 export const Comment = styled.div`
-  position: relative;
-  margin-top: 25px;
-  ${font.size(15)}
+    position: relative;
+    margin-top: 25px;
+    ${font.size(15)}
 `;
 
 export const UserAvatar = styled(Avatar)`
-  position: absolute;
-  top: 0;
-  left: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
 `;
 
 export const Content = styled.div`
-  padding-left: 44px;
+    padding-left: 44px;
 `;
 
 export const Username = styled.div`
-  display: inline-block;
-  padding-right: 12px;
-  padding-bottom: 10px;
-  color: ${color.textDark};
-  ${font.medium}
+    display: inline-block;
+    padding-right: 12px;
+    padding-bottom: 10px;
+    color: ${color.textDark};
+    ${font.medium}
 `;
 
 export const CreatedAt = styled.div`
-  display: inline-block;
-  padding-bottom: 10px;
-  color: ${color.textDark};
-  ${font.size(14.5)}
+    display: inline-block;
+    padding-bottom: 10px;
+    color: ${color.textDark};
+    ${font.size(14.5)}
 `;
 
 export const Body = styled.p`
-  padding-bottom: 10px;
-  white-space: pre-wrap;
+    padding-bottom: 10px;
+    white-space: pre-wrap;
 `;
 
 const actionLinkStyles = css`
-  display: inline-block;
-  padding: 2px 0;
-  color: ${color.textMedium};
-  ${font.size(14.5)}
-  ${mixin.clickable}
+    display: inline-block;
+    padding: 2px 0;
+    color: ${color.textMedium};
+    ${font.size(14.5)}
+    ${mixin.clickable}
   &:hover {
-    text-decoration: underline;
-  }
+        text-decoration: underline;
+    }
 `;
 
 export const EditLink = styled.div`
-  margin-right: 12px;
-  ${actionLinkStyles}
+    margin-right: 12px;
+    ${actionLinkStyles}
 `;
 
 export const DeleteLink = styled.div`
-  ${actionLinkStyles}
-  &:before {
-    position: relative;
-    right: 6px;
-    content: '·';
-    display: inline-block;
-  }
+    ${actionLinkStyles}
+    &:before {
+        position: relative;
+        right: 6px;
+        content: '·';
+        display: inline-block;
+    }
 `;

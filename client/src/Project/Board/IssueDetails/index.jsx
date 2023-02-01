@@ -19,74 +19,78 @@ import Dates from './Dates';
 import { TopActions, TopActionsRight, Content, Left, Right } from './Styles';
 
 const propTypes = {
-  issueId: PropTypes.string.isRequired,
-  projectUsers: PropTypes.array.isRequired,
-  fetchProject: PropTypes.func.isRequired,
-  updateLocalProjectIssues: PropTypes.func.isRequired,
-  modalClose: PropTypes.func.isRequired,
+    issueId: PropTypes.string.isRequired,
+    projectUsers: PropTypes.array.isRequired,
+    fetchProject: PropTypes.func.isRequired,
+    updateLocalProjectIssues: PropTypes.func.isRequired,
+    modalClose: PropTypes.func.isRequired,
 };
 
 const ProjectBoardIssueDetails = ({
-  issueId,
-  projectUsers,
-  fetchProject,
-  updateLocalProjectIssues,
-  modalClose,
+    issueId,
+    projectUsers,
+    fetchProject,
+    updateLocalProjectIssues,
+    modalClose,
 }) => {
-  const [{ data, error, setLocalData }, fetchIssue] = useApi.get(`/issues/${issueId}`);
+    const [{ data, error, setLocalData }, fetchIssue] = useApi.get(`/issues/${issueId}`);
 
-  if (!data) return <Loader />;
-  if (error) return <PageError />;
+    if (!data) return <Loader />;
+    if (error) return <PageError />;
 
-  const { issue } = data;
+    const { issue } = data;
 
-  const updateLocalIssueDetails = fields =>
-    setLocalData(currentData => ({ issue: { ...currentData.issue, ...fields } }));
+    const updateLocalIssueDetails = fields =>
+        setLocalData(currentData => ({ issue: { ...currentData.issue, ...fields } }));
 
-  const updateIssue = updatedFields => {
-    api.optimisticUpdate(`/issues/${issueId}`, {
-      updatedFields,
-      currentFields: issue,
-      setLocalData: fields => {
-        updateLocalIssueDetails(fields);
-        updateLocalProjectIssues(issue.id, fields);
-      },
-    });
-  };
+    const updateIssue = updatedFields => {
+        api.optimisticUpdate(`/issues/${issueId}`, {
+            updatedFields,
+            currentFields: issue,
+            setLocalData: fields => {
+                updateLocalIssueDetails(fields);
+                updateLocalProjectIssues(issue.id, fields);
+            },
+        });
+    };
 
-  return (
-    <Fragment>
-      <TopActions>
-        <Type issue={issue} updateIssue={updateIssue} />
-        <TopActionsRight>
-          <AboutTooltip
-            renderLink={linkProps => (
-              <Button icon="feedback" variant="empty" {...linkProps}>
-                Give feedback
-              </Button>
-            )}
-          />
-          <CopyLinkButton variant="empty" />
-          <Delete issue={issue} fetchProject={fetchProject} modalClose={modalClose} />
-          <Button icon="close" iconSize={24} variant="empty" onClick={modalClose} />
-        </TopActionsRight>
-      </TopActions>
-      <Content>
-        <Left>
-          <Title issue={issue} updateIssue={updateIssue} />
-          <Description issue={issue} updateIssue={updateIssue} />
-          <Comments issue={issue} fetchIssue={fetchIssue} />
-        </Left>
-        <Right>
-          <Status issue={issue} updateIssue={updateIssue} />
-          <AssigneesReporter issue={issue} updateIssue={updateIssue} projectUsers={projectUsers} />
-          <Priority issue={issue} updateIssue={updateIssue} />
-          <EstimateTracking issue={issue} updateIssue={updateIssue} />
-          <Dates issue={issue} />
-        </Right>
-      </Content>
-    </Fragment>
-  );
+    return (
+        <Fragment>
+            <TopActions>
+                <Type issue={issue} updateIssue={updateIssue} />
+                <TopActionsRight>
+                    <AboutTooltip
+                        renderLink={linkProps => (
+                            <Button icon="feedback" variant="empty" {...linkProps}>
+                                Give feedback
+                            </Button>
+                        )}
+                    />
+                    <CopyLinkButton variant="empty" />
+                    <Delete issue={issue} fetchProject={fetchProject} modalClose={modalClose} />
+                    <Button icon="close" iconSize={24} variant="empty" onClick={modalClose} />
+                </TopActionsRight>
+            </TopActions>
+            <Content>
+                <Left>
+                    <Title issue={issue} updateIssue={updateIssue} />
+                    <Description issue={issue} updateIssue={updateIssue} />
+                    <Comments issue={issue} fetchIssue={fetchIssue} />
+                </Left>
+                <Right>
+                    <Status issue={issue} updateIssue={updateIssue} />
+                    <AssigneesReporter
+                        issue={issue}
+                        updateIssue={updateIssue}
+                        projectUsers={projectUsers}
+                    />
+                    <Priority issue={issue} updateIssue={updateIssue} />
+                    <EstimateTracking issue={issue} updateIssue={updateIssue} />
+                    <Dates issue={issue} />
+                </Right>
+            </Content>
+        </Fragment>
+    );
 };
 
 ProjectBoardIssueDetails.propTypes = propTypes;

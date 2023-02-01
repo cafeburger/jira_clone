@@ -11,12 +11,12 @@ import Routes from './Routes';
 import './fontStyles.css';
 
 const App = () => (
-  <Fragment>
-    <NormalizeStyles />
-    <BaseStyles />
-    <Toast />
-    <Routes />
-  </Fragment>
+    <Fragment>
+        <NormalizeStyles />
+        <BaseStyles />
+        <Toast />
+        <Routes />
+    </Fragment>
 );
 
 export default App;

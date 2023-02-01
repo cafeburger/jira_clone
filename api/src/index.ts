@@ -14,8 +14,11 @@ import { attachPublicRoutes, attachPrivateRoutes } from './routes';
 
 const establishDatabaseConnection = async (): Promise<void> => {
   try {
+    console.log('start to create db');
     await createDatabaseConnection();
+    console.log('createDatabaseConnection done');
   } catch (error) {
+    console.log('error');
     console.log(error);
   }
 };
@@ -42,6 +45,7 @@ const initializeExpress = (): void => {
 };
 
 const initializeApp = async (): Promise<void> => {
+  console.log('init db');
   await establishDatabaseConnection();
   initializeExpress();
 };

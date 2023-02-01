@@ -4,10 +4,10 @@ import { color, font } from 'shared/utils/styles';
 import Icon from 'shared/components/Icon';
 
 export const StyledInput = styled.div`
-  position: relative;
-  display: inline-block;
-  height: 32px;
-  width: 100%;
+    position: relative;
+    display: inline-block;
+    height: 32px;
+    width: 100%;
 `;
 
 export const InputElement = styled.input`
@@ -31,20 +31,20 @@ export const InputElement = styled.input`
     box-shadow: 0 0 0 1px ${color.borderInputFocus};
   }
   ${props =>
-    props.invalid &&
-    css`
-      &,
-      &:focus {
-        border: 1px solid ${color.danger};
-        box-shadow: none;
-      }
-    `}
+      props.invalid &&
+      css`
+          &,
+          &:focus {
+              border: 1px solid ${color.danger};
+              box-shadow: none;
+          }
+      `}
 `;
 
 export const StyledIcon = styled(Icon)`
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  pointer-events: none;
-  color: ${color.textMedium};
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    pointer-events: none;
+    color: ${color.textMedium};
 `;

@@ -6,14 +6,14 @@ import { formatDateTimeConversational } from 'shared/utils/dateTime';
 import { Dates } from './Styles';
 
 const propTypes = {
-  issue: PropTypes.object.isRequired,
+    issue: PropTypes.object.isRequired,
 };
 
 const ProjectBoardIssueDetailsDates = ({ issue }) => (
-  <Dates>
-    <div>Created at {formatDateTimeConversational(issue.createdAt)}</div>
-    <div>Updated at {formatDateTimeConversational(issue.updatedAt)}</div>
-  </Dates>
+    <Dates>
+        <div>Created at {formatDateTimeConversational(issue.createdAt)}</div>
+        <div>Updated at {formatDateTimeConversational(issue.updatedAt)}</div>
+    </Dates>
 );
 
 ProjectBoardIssueDetailsDates.propTypes = propTypes;

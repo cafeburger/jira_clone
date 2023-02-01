@@ -5,42 +5,42 @@ import { debounce } from 'lodash';
 import { Input } from 'shared/components';
 
 const propTypes = {
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  onChange: PropTypes.func.isRequired,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    onChange: PropTypes.func.isRequired,
 };
 
 const defaultProps = {
-  value: undefined,
+    value: undefined,
 };
 
 const InputDebounced = ({ onChange, value: propsValue, ...inputProps }) => {
-  const [value, setValue] = useState(propsValue);
-  const isControlled = propsValue !== undefined;
+    const [value, setValue] = useState(propsValue);
+    const isControlled = propsValue !== undefined;
 
-  const handleChange = useCallback(
-    debounce(newValue => onChange(newValue), 500),
-    [],
-  );
+    const handleChange = useCallback(
+        debounce(newValue => onChange(newValue), 500),
+        [],
+    );
 
-  const valueRef = useRef(value);
-  valueRef.current = value;
+    const valueRef = useRef(value);
+    valueRef.current = value;
 
-  useEffect(() => {
-    if (propsValue !== valueRef.current) {
-      setValue(propsValue);
-    }
-  }, [propsValue]);
+    useEffect(() => {
+        if (propsValue !== valueRef.current) {
+            setValue(propsValue);
+        }
+    }, [propsValue]);
 
-  return (
-    <Input
-      {...inputProps}
-      value={isControlled ? value : undefined}
-      onChange={newValue => {
-        setValue(newValue);
-        handleChange(newValue);
-      }}
-    />
-  );
+    return (
+        <Input
+            {...inputProps}
+            value={isControlled ? value : undefined}
+            onChange={newValue => {
+                setValue(newValue);
+                handleChange(newValue);
+            }}
+        />
+    );
 };
 
 InputDebounced.propTypes = propTypes;

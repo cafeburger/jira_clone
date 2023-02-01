@@ -6,47 +6,47 @@ import { Textarea } from 'shared/components';
 import { Actions, FormButton } from './Styles';
 
 const propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  isWorking: PropTypes.bool.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  onCancel: PropTypes.func.isRequired,
+    value: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+    isWorking: PropTypes.bool.isRequired,
+    onSubmit: PropTypes.func.isRequired,
+    onCancel: PropTypes.func.isRequired,
 };
 
 const ProjectBoardIssueDetailsCommentsBodyForm = ({
-  value,
-  onChange,
-  isWorking,
-  onSubmit,
-  onCancel,
+    value,
+    onChange,
+    isWorking,
+    onSubmit,
+    onCancel,
 }) => {
-  const $textareaRef = useRef();
+    const $textareaRef = useRef();
 
-  const handleSubmit = () => {
-    if ($textareaRef.current.value.trim()) {
-      onSubmit();
-    }
-  };
+    const handleSubmit = () => {
+        if ($textareaRef.current.value.trim()) {
+            onSubmit();
+        }
+    };
 
-  return (
-    <Fragment>
-      <Textarea
-        autoFocus
-        placeholder="Add a comment..."
-        value={value}
-        onChange={onChange}
-        ref={$textareaRef}
-      />
-      <Actions>
-        <FormButton variant="primary" isWorking={isWorking} onClick={handleSubmit}>
-          Save
-        </FormButton>
-        <FormButton variant="empty" onClick={onCancel}>
-          Cancel
-        </FormButton>
-      </Actions>
-    </Fragment>
-  );
+    return (
+        <Fragment>
+            <Textarea
+                autoFocus
+                placeholder="Add a comment..."
+                value={value}
+                onChange={onChange}
+                ref={$textareaRef}
+            />
+            <Actions>
+                <FormButton variant="primary" isWorking={isWorking} onClick={handleSubmit}>
+                    Save
+                </FormButton>
+                <FormButton variant="empty" onClick={onCancel}>
+                    Cancel
+                </FormButton>
+            </Actions>
+        </Fragment>
+    );
 };
 
 ProjectBoardIssueDetailsCommentsBodyForm.propTypes = propTypes;
